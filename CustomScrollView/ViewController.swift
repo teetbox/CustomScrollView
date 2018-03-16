@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     }
     
     var wwdcTopConstraint: NSLayoutConstraint?
+    var wwdcHeightConstraint: NSLayoutConstraint?
     lazy var wwdc: UIImageView = {
         return UIImageView()
     }()
@@ -42,11 +43,14 @@ class ViewController: UIViewController {
         scrollView.addSubview(wwdc)
         
         scrollView.addConstraints(format: "H:|[v0(\(view.frame.width))]", views: wwdc)
-        scrollView.addConstraints(format: "V:[v0(\(view.frame.width / 2))]", views: wwdc)
+//        scrollView.addConstraints(format: "V:[v0(\(view.frame.width / 2))]", views: wwdc)
         
         wwdcTopConstraint = wwdc.topAnchor.constraint(equalTo: scrollView.topAnchor)
         wwdcTopConstraint?.isActive = true
         wwdcTopConstraint?.constant = -50
+        
+        wwdcHeightConstraint = wwdc.heightAnchor.constraint(equalToConstant: view.frame.width / 2)
+        wwdcHeightConstraint?.isActive = true
 
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeHandler))
         swipeGesture.direction = .down
@@ -73,6 +77,8 @@ class ViewController: UIViewController {
         print(#function)
     }
     
+    var previousOffSetY: CGFloat = 0
+    
 }
 
 extension ViewController: UIScrollViewDelegate {
@@ -80,16 +86,29 @@ extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offSetY = scrollView.contentOffset.y
 
+        if (offSetY < -20 && offSetY > previousOffSetY) {
+            let gap = -20 - offSetY
+            let distance = offSetY - previousOffSetY
+            let unit = (wwdcHeightConstraint!.constant - view.frame.width / 2) / gap
+            wwdcHeightConstraint?.constant -= distance * unit
+        }
         if offSetY <= -50 {
-            print(wwdcTopConstraint?.constant)
+            wwdcTopConstraint?.isActive = false
             wwdcTopConstraint = wwdc.topAnchor.constraint(equalTo: view.topAnchor)
             wwdcTopConstraint?.isActive = true
-//            scrollView.contentOffset.y += -50 - offSetY
-            isAmplifyEnabled = true
-            
+
+            let distance = sqrt(sqrt(sqrt(sqrt(-50 - offSetY))))
+            if (offSetY < previousOffSetY) {
+                wwdcHeightConstraint?.constant += distance
+            }
         } else {
-            isAmplifyEnabled = false
+            wwdcTopConstraint?.isActive = false
+            wwdcTopConstraint = wwdc.topAnchor.constraint(equalTo: scrollView.topAnchor)
+            wwdcTopConstraint?.isActive = true
+            wwdcTopConstraint?.constant = -50
         }
+        
+        previousOffSetY = offSetY
     }
     
 }
