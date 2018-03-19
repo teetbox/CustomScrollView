@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90BBA80205F842D00E859A2 /* SegmentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90BBA7F205F842D00E859A2 /* SegmentHeaderView.swift */; };
+		C95F3280205F483300E4C9E6 /* FeedACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95F327F205F483300E4C9E6 /* FeedACell.swift */; };
+		C95F3282205F484200E4C9E6 /* FeedBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95F3281205F484200E4C9E6 /* FeedBCell.swift */; };
+		C95F3284205F49D400E4C9E6 /* FeedB2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95F3283205F49D400E4C9E6 /* FeedB2Cell.swift */; };
 		C9D6F75E205A1C270058C0D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6F75D205A1C270058C0D6 /* AppDelegate.swift */; };
 		C9D6F760205A1C270058C0D6 /* CustomScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6F75F205A1C270058C0D6 /* CustomScrollViewController.swift */; };
 		C9D6F765205A1C270058C0D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9D6F764205A1C270058C0D6 /* Assets.xcassets */; };
@@ -18,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C90BBA7F205F842D00E859A2 /* SegmentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentHeaderView.swift; sourceTree = "<group>"; };
+		C95F327F205F483300E4C9E6 /* FeedACell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedACell.swift; sourceTree = "<group>"; };
+		C95F3281205F484200E4C9E6 /* FeedBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBCell.swift; sourceTree = "<group>"; };
+		C95F3283205F49D400E4C9E6 /* FeedB2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedB2Cell.swift; sourceTree = "<group>"; };
 		C9D6F75A205A1C270058C0D6 /* CustomScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D6F75D205A1C270058C0D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9D6F75F205A1C270058C0D6 /* CustomScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +49,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C90BBA81205F843800E859A2 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				C90BBA7F205F842D00E859A2 /* SegmentHeaderView.swift */,
+				C9D6F75F205A1C270058C0D6 /* CustomScrollViewController.swift */,
+				C95F327F205F483300E4C9E6 /* FeedACell.swift */,
+				C95F3281205F484200E4C9E6 /* FeedBCell.swift */,
+				C95F3283205F49D400E4C9E6 /* FeedB2Cell.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		C90BBA82205F845200E859A2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C9D6F76F205A1EF20058C0D6 /* UIView+Constraint.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C9D6F751205A1C270058C0D6 = {
 			isa = PBXGroup;
 			children = (
@@ -62,8 +90,8 @@
 			children = (
 				C9D6F75D205A1C270058C0D6 /* AppDelegate.swift */,
 				C9D6F771205A39490058C0D6 /* ViewController.swift */,
-				C9D6F75F205A1C270058C0D6 /* CustomScrollViewController.swift */,
-				C9D6F76F205A1EF20058C0D6 /* UIView+Constraint.swift */,
+				C90BBA81205F843800E859A2 /* CustomViews */,
+				C90BBA82205F845200E859A2 /* Extensions */,
 				C9D6F773205A39600058C0D6 /* Main.storyboard */,
 				C9D6F777205A42C80058C0D6 /* wwdc2016.png */,
 				C9D6F764205A1C270058C0D6 /* Assets.xcassets */,
@@ -147,6 +175,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D6F770205A1EF20058C0D6 /* UIView+Constraint.swift in Sources */,
+				C90BBA80205F842D00E859A2 /* SegmentHeaderView.swift in Sources */,
+				C95F3280205F483300E4C9E6 /* FeedACell.swift in Sources */,
+				C95F3284205F49D400E4C9E6 /* FeedB2Cell.swift in Sources */,
+				C95F3282205F484200E4C9E6 /* FeedBCell.swift in Sources */,
 				C9D6F760205A1C270058C0D6 /* CustomScrollViewController.swift in Sources */,
 				C9D6F772205A39490058C0D6 /* ViewController.swift in Sources */,
 				C9D6F75E205A1C270058C0D6 /* AppDelegate.swift in Sources */,
