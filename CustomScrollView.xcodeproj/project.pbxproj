@@ -19,6 +19,7 @@
 		C9D6F772205A39490058C0D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6F771205A39490058C0D6 /* ViewController.swift */; };
 		C9D6F774205A39600058C0D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9D6F773205A39600058C0D6 /* Main.storyboard */; };
 		C9D6F778205A42C80058C0D6 /* wwdc2016.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D6F777205A42C80058C0D6 /* wwdc2016.png */; };
+		C9F015B12060AF8200125A61 /* ScreenUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F015B02060AF8200125A61 /* ScreenUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C9D6F771205A39490058C0D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9D6F773205A39600058C0D6 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C9D6F777205A42C80058C0D6 /* wwdc2016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wwdc2016.png; sourceTree = "<group>"; };
+		C9F015B02060AF8200125A61 /* ScreenUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				C9D6F771205A39490058C0D6 /* ViewController.swift */,
 				C90BBA81205F843800E859A2 /* CustomViews */,
 				C90BBA82205F845200E859A2 /* Extensions */,
+				C9F015AF2060AF6600125A61 /* Utilities */,
 				C9D6F773205A39600058C0D6 /* Main.storyboard */,
 				C9D6F777205A42C80058C0D6 /* wwdc2016.png */,
 				C9D6F764205A1C270058C0D6 /* Assets.xcassets */,
@@ -99,6 +102,14 @@
 				C9D6F769205A1C270058C0D6 /* Info.plist */,
 			);
 			path = CustomScrollView;
+			sourceTree = "<group>";
+		};
+		C9F015AF2060AF6600125A61 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C9F015B02060AF8200125A61 /* ScreenUtility.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D6F770205A1EF20058C0D6 /* UIView+Constraint.swift in Sources */,
+				C9F015B12060AF8200125A61 /* ScreenUtility.swift in Sources */,
 				C90BBA80205F842D00E859A2 /* SegmentHeaderView.swift in Sources */,
 				C95F3280205F483300E4C9E6 /* FeedACell.swift in Sources */,
 				C95F3284205F49D400E4C9E6 /* FeedB2Cell.swift in Sources */,

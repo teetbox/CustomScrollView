@@ -38,7 +38,8 @@ class CustomScrollViewController: UIViewController {
         contentView.addConstraints(format: "H:|[v0]|", views: backImageView)
         backImageTopConstraint = backImageView.topAnchor.constraint(equalTo: scrollView.topAnchor)
         backImageTopConstraint?.isActive = true
-        backImageTopConstraint?.constant = -50
+//        backImageTopConstraint?.constant = -50
+        backImageTopConstraint?.constant = backImageDefaultTopConstant
         backImageHeightConstraint = backImageView.heightAnchor.constraint(equalToConstant: view.frame.width / 2)
         backImageHeightConstraint?.isActive = true
         
@@ -65,7 +66,8 @@ class CustomScrollViewController: UIViewController {
         
         view.addSubview(navView)
         view.addConstraints(format: "H:|[v0]|", views: navView)
-        view.addConstraints(format: "V:|[v0(84)]", views: navView)
+        let navHight = ScreenUtility.isPhoneX ? 88 : 64
+        view.addConstraints(format: "V:|[v0(\(navHight))]", views: navView)
     }
     
     let navView: UIView = {
@@ -91,7 +93,7 @@ class CustomScrollViewController: UIViewController {
     
     var backImageTopConstraint: NSLayoutConstraint?
     var backImageHeightConstraint: NSLayoutConstraint?
-    
+    let backImageDefaultTopConstant: CGFloat = ScreenUtility.isPhoneX ? -74 : -50
     let backImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -127,8 +129,24 @@ extension CustomScrollViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offSetY = scrollView.contentOffset.y
+        
+        // Show or hide navigation view
+        if offSetY > 50 {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.navView.alpha = 1
+                self.shouldStatusBarDark = true
+            })
+        } else {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.navView.alpha = 0
+                self.shouldStatusBarDark = false
+            })
+        }
+
+        // Update back image view top constraint
         print(offSetY)
-        if offSetY <= -50 {
+        // if offSetY <= -50 {
+        if offSetY <= backImageDefaultTopConstant {
             backImageTopConstraint?.isActive = false
             backImageTopConstraint = backImageView.topAnchor.constraint(equalTo: view.topAnchor)
             backImageTopConstraint?.isActive = true
@@ -144,7 +162,8 @@ extension CustomScrollViewController: UIScrollViewDelegate {
             backImageTopConstraint?.isActive = false
             backImageTopConstraint = backImageView.topAnchor.constraint(equalTo: scrollView.topAnchor)
             backImageTopConstraint?.isActive = true
-            backImageTopConstraint?.constant = -50
+//            backImageTopConstraint?.constant = -50
+            backImageTopConstraint?.constant = backImageDefaultTopConstant
         }
         
         // When scroll view goes up, re-small the image
@@ -158,18 +177,6 @@ extension CustomScrollViewController: UIScrollViewDelegate {
 
         previousOffSetY = offSetY
         */
-        
-        if offSetY > 50 {
-            UIView.animate(withDuration: 0.4, animations: {
-                self.navView.alpha = 1
-                self.shouldStatusBarDark = true
-            })
-        } else {
-            UIView.animate(withDuration: 0.4, animations: {
-                self.navView.alpha = 0
-                self.shouldStatusBarDark = false
-            })
-        }
     }
     
 }
