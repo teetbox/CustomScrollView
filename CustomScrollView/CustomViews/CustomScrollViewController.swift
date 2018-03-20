@@ -10,8 +10,14 @@ import UIKit
 
 class CustomScrollViewController: UIViewController {
     
+    var shouldStatusBarDark = false {
+        didSet {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return shouldStatusBarDark ? .default : .lightContent
     }
 
     override func viewDidLoad() {
@@ -56,7 +62,18 @@ class CustomScrollViewController: UIViewController {
         let contentHeight = view.frame.width / 2 + 70 + 100 + feedCollection.frame.height
         contentView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: contentHeight)
         scrollView.contentSize = contentView.frame.size
+        
+        view.addSubview(navView)
+        view.addConstraints(format: "H:|[v0]|", views: navView)
+        view.addConstraints(format: "V:|[v0(84)]", views: navView)
     }
+    
+    let navView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.7, alpha: 1)
+        view.alpha = 0
+        return view
+    }()
     
     let scrollView: UIScrollView = {
         let scroll = UIScrollView(frame: UIScreen.main.bounds)
@@ -110,7 +127,7 @@ extension CustomScrollViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offSetY = scrollView.contentOffset.y
-        
+        print(offSetY)
         if offSetY <= -50 {
             backImageTopConstraint?.isActive = false
             backImageTopConstraint = backImageView.topAnchor.constraint(equalTo: view.topAnchor)
@@ -141,6 +158,18 @@ extension CustomScrollViewController: UIScrollViewDelegate {
 
         previousOffSetY = offSetY
         */
+        
+        if offSetY > 50 {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.navView.alpha = 1
+                self.shouldStatusBarDark = true
+            })
+        } else {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.navView.alpha = 0
+                self.shouldStatusBarDark = false
+            })
+        }
     }
     
 }
